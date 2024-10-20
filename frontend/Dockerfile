@@ -1,0 +1,22 @@
+# Frontend Dockerfile
+
+# Use a Node.js base image
+FROM node:14
+
+# Set the working directory
+WORKDIR /app
+
+# Copy package.json and package-lock.json
+COPY package*.json ./
+
+# Install dependencies
+RUN npm install
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the frontend port (if you're using one, typically React apps use 3000)
+EXPOSE 3000
+
+# Command to run the application
+CMD ["npm", "start"]
